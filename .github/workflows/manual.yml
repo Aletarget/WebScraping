@@ -8,6 +8,7 @@ on:
 env:
   # Esto es lo que evita que el workflow falle en el futuro cercano
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   call-api:
