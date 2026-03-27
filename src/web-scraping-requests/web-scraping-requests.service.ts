@@ -17,12 +17,10 @@ export class WebScrapingRequestsService {
     private readonly newsSnapshot: Model<NewSnapshot>
   ) { }
 
-  @Cron(CronExpression.EVERY_DAY_AT_6AM, {
+  @Cron("0 25 * * * *", {
     timeZone: 'America/Bogota'
   })
   async getTopNews() {
-
-    const newsMapComments = new Map<string, string[]>();
     try {
       const { data } = await axios.get(this.BASE_URL, {
         headers: {
@@ -85,7 +83,7 @@ export class WebScrapingRequestsService {
           }
         }
         newsMapComments.set(news, comments)
-        console.log(comments)
+        console.log(`Performing WebScraping`)
       })
     );
     let NewsJson: WebscrapInterface[] = [];
