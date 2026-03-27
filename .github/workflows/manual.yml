@@ -2,7 +2,7 @@ name: Cron Scraping
 
 on:
   schedule:
-    - cron: '0 11 * * *' # 6 AM Colombia
+    - cron: '*/5 * * * *' # 6 AM Colombia
 
 jobs:
   call-api:
