@@ -9,5 +9,9 @@ export class ApiRequestsController {
   // getData(){
   //   return this.WebScrapingRequestsService.getTopNews();
   // } 
-  
+
+  @Get()
+  testingDeployment(){
+    return {funciona: true}
+  }
 }
