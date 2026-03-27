@@ -3,6 +3,7 @@ name: Cron Scraping
 on:
   schedule:
     - cron: '*/5 * * * *' # 6 AM Colombia
+  workflow_dispatch:
 
 jobs:
   call-api:
