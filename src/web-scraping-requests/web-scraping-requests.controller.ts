@@ -10,8 +10,8 @@ export class ApiRequestsController {
   //   return this.WebScrapingRequestsService.getTopNews();
   // } 
 
-  @Get()
-  testingDeployment(){
-    return {funciona: true}
-  }
+  // @Get()
+  // testingDeployment(){
+  //   return {funciona: true}
+  // }
 }
