@@ -1,0 +1,14 @@
+name: Cron Scraping
+
+on:
+  schedule:
+    - cron: '0 11 * * *' # 6 AM Colombia
+
+jobs:
+  call-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call endpoint
+        run: |
+          curl -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+          https://web-scraping-api-sooty.vercel.app/web-scraping-api-requests/scraping
