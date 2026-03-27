@@ -17,7 +17,7 @@ export class WebScrapingRequestsService {
     private readonly newsSnapshot: Model<NewSnapshot>
   ) { }
 
-  @Cron("0 25 * * * *", {
+  @Cron("0 30 * * * *", {
     timeZone: 'America/Bogota'
   })
   async getTopNews() {
