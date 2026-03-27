@@ -12,6 +12,8 @@ export class ApiRequestsController {
 
   @Get('scraping')
   runScraping(@Headers('x-cron-secret') secret: string) {
+    console.log('HEADER:', secret);
+    console.log('ENV:', process.env.CRON_SECRET);
     if (secret !== process.env.CRON_SECRET) {
       throw new UnauthorizedException();
     }
