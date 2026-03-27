@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/web-scraping-api-requests/scraping",
-      "schedule": "2 * * * *"
+      "path": "/api/web-scraping-api-requests/scraping",
+      "schedule": "0 11 * * *"
     }
   ]
 }
