@@ -16,10 +16,10 @@ export class WebScrapingRequestsService {
     @InjectModel(NewSnapshot.name)
     private readonly newsSnapshot: Model<NewSnapshot>
   ) { }
-
-  @Cron("0 30 * * * *", {
-    timeZone: 'America/Bogota'
-  })
+  // Dont use this in vercel  
+  // @Cron("0 34 * * * *", { 
+  //   timeZone: 'America/Bogota'
+  // })
   async getTopNews() {
     try {
       const { data } = await axios.get(this.BASE_URL, {

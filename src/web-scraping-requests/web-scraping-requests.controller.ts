@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Headers, UnauthorizedException } from '@nestjs/common';
 import { WebScrapingRequestsService } from './web-scraping-requests.service';
 
-@Controller('api-requests')
+@Controller('web-scraping-api-requests')
 export class ApiRequestsController {
   constructor(private readonly WebScrapingRequestsService: WebScrapingRequestsService) {}
 
@@ -10,8 +10,12 @@ export class ApiRequestsController {
   //   return this.WebScrapingRequestsService.getTopNews();
   // } 
 
-  // @Get()
-  // testingDeployment(){
-  //   return {funciona: true}
-  // }
+  @Get('scraping')
+  runScraping(@Headers('x-cron-secret') secret: string) {
+    if (secret !== process.env.CRON_SECRET) {
+      throw new UnauthorizedException();
+    }
+
+    return this.WebScrapingRequestsService.getTopNews();
+  }
 }
