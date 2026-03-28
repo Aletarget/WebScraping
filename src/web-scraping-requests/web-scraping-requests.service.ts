@@ -39,7 +39,7 @@ export class WebScrapingRequestsService {
       })
       await this.getComments(pages)
     } catch (error) {
-      this.logger.error(error)
+      this.logger.error(error.message)
     }
   }
 
@@ -64,16 +64,16 @@ export class WebScrapingRequestsService {
 
             const $ = cheerio.load(data);
             const pageComments = $(".user-thread");
-
             if (pageComments.length === 0) {
               hasMore = false;
               break;
             }
-
+            
             pageComments.each((i, el) => {
               const comment = $(el).find(".uopin").text().trim();
               if (comment) comments.push(comment);
             });
+
 
             page++;
 
@@ -82,8 +82,11 @@ export class WebScrapingRequestsService {
             hasMore = false;
           }
         }
-        newsMapComments.set(news, comments)
-        console.log(`Performing WebScraping`)
+        if(comments.length > 0){
+          newsMapComments.set(news, comments);
+          this.logger.log(`Performing WebScraping from ${this.BASE_URL}/newscomm-${newsId}p${page}.php}`)
+          this.logger.log(`Comments Array length : ${comments.length}`)
+        }
       })
     );
     let NewsJson: WebscrapInterface[] = [];
