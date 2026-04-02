@@ -2,7 +2,7 @@ name: Cron Scraping
 
 on:
   schedule:
-    - cron: '0 11 * * *' ## 6AM COLOMBIA
+    - cron: '0 23 * * *' ## 6PM COLOMBIA
   workflow_dispatch:
 
 jobs:
