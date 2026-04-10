@@ -1,0 +1,10 @@
+export const MainQuery = `
+(iphone OR "samsung galaxy" OR pixel OR xiaomi OR oneplus OR oppo OR vivo OR huawei OR honor OR realme OR nokia OR motorola OR sony OR lg OR asus OR acer OR msi OR razer OR alienware OR macbook OR "dell xps" OR thinkpad OR "hp spectre" OR "hp pavilion" OR "lenovo legion" OR "asus rog" OR "acer predator" OR "surface laptop" OR "surface pro" OR ipad OR "galaxy tab" OR "apple watch" OR fitbit OR garmin OR amazfit OR "galaxy watch" OR "pixel watch" OR headphones OR earbuds OR "airpods" OR "sony wh" OR bose OR jbl OR anker OR logitech OR corsair OR steelseries OR "rtx" OR "gtx" OR "rx 6600" OR "rx 6700" OR "rx 6800" OR ryzen OR intel OR snapdragon OR exynos OR mediatek)
+ AND 
+("iphone 13" OR "iphone 14" OR "iphone 15" OR "iphone 16" OR "s21" OR "s22" OR "s23" OR "s24" OR "s25" OR "pixel 6" OR "pixel 7" OR "pixel 8" OR "pixel 9" OR "m1" OR "m2" OR "m3" OR "xps 13" OR "xps 15" OR "legion 5" OR "legion 7" OR "rog strix" OR "rog zephyrus" OR "predator helios" OR "rtx 3050" OR "rtx 3060" OR "rtx 3070" OR "rtx 3080" OR "rtx 4060" OR "rtx 4070" OR "rtx 4080" OR "rtx 4090" OR "ryzen 5" OR "ryzen 7" OR "ryzen 9" OR "i5" OR "i7" OR "i9" OR "snapdragon 8" OR "dimensity 9000") 
+AND 
+("i bought" OR "i got" OR "i've been using" OR "after using" OR "been using this" OR "using it for" OR "my experience" OR "my honest opinion" OR "worth it" OR "not worth it" OR "do not buy" OR "regret buying" OR "happy with" OR "disappointed with")
+AND 
+(battery OR "battery life" OR camera OR "camera quality" OR performance OR speed OR smooth OR lag OR fast OR slow OR overheating OR heating OR temperature OR display OR screen OR brightness OR build OR "build quality" OR durability OR sound OR audio) 
+-is:reply -is:retweet -url:links -football -nba -nfl -soccer -coach -team -training -crypto -nft -job -hiring -giveaway -politics`;
+export const TwitterUrl = `https://api.twitterapi.io/twitter/tweet/advanced_search`

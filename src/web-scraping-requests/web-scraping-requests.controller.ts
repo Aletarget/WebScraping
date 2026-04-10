@@ -2,7 +2,7 @@ import { Controller, Get, Headers, UnauthorizedException } from '@nestjs/common'
 import { WebScrapingRequestsService } from './web-scraping-requests.service';
 
 @Controller('web-scraping-api-requests')
-export class ApiRequestsController {
+export class WebScrapingRequestsController {
   constructor(private readonly WebScrapingRequestsService: WebScrapingRequestsService) {}
 
   // @Get()

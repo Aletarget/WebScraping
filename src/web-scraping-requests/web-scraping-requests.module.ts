@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { WebScrapingRequestsService } from './web-scraping-requests.service';
-import { ApiRequestsController } from './web-scraping-requests.controller';
+import { WebScrapingRequestsController } from './web-scraping-requests.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { NewSnapshot, NewSnapshotSchema } from './schemas/NewsSnapshot';
 
@@ -11,10 +11,10 @@ import { NewSnapshot, NewSnapshotSchema } from './schemas/NewsSnapshot';
     ]),
   ],
 
-  controllers: [ApiRequestsController],
+  controllers: [WebScrapingRequestsController],
   providers: [WebScrapingRequestsService],
   exports: [
     MongooseModule
   ]
 })
-export class ApiRequestsModule { }
+export class WebScrapingRequestsModule { }
