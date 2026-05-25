@@ -9,10 +9,7 @@ export class ApiComments extends Document{
     tweets: object[];
 
     @Prop()
-    has_next_page: boolean;
-
-    @Prop()
-    next_cursor: string;
+    date: string;
 
 }
 
