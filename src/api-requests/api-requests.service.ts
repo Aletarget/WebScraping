@@ -10,6 +10,8 @@ import { ApiTweets } from './interfaces/apiTwits.interface';
 
 @Injectable()
 export class ApiRequestsService {
+    private readonly sleep = (ms: number) =>
+        new Promise((resolve) => setTimeout(resolve, ms));
     private readonly Queries = Queries;
     constructor(
         private readonly axiosAdapter: AxiosAdapter,
@@ -19,29 +21,35 @@ export class ApiRequestsService {
     ) { }
 
     async getTwitterApiRequest() {
-        const queriesResponse: TwitterAPIResponse[] = await Promise.all(
-            Queries.map(async (query) => {
-                const { data } = await this.axiosAdapter.get(
-                    TwitterUrl,
-                    {
-                        x_api_key: this.configService.get('TWITTERAPI_KEY')!,
-                    },
-                    query.query
-                );
+        const queriesResponse: TwitterAPIResponse[] = [];
 
-                return data as TwitterAPIResponse;
-            })
-        );
-        const unifyTweets: Tweet[] = []
+        for (const query of Queries) {
+            const { data } = await this.axiosAdapter.get(
+                TwitterUrl,
+                {
+                    x_api_key: this.configService.get('TWITTERAPI_KEY')!,
+                },
+                query.query
+            );
+
+            queriesResponse.push(data as TwitterAPIResponse);
+
+            await this.sleep(6000);
+        }
+
+        const unifyTweets: Tweet[] = [];
+
         queriesResponse.forEach((res) => {
             res.tweets.forEach((tweet) => {
-                unifyTweets.push(tweet)
-            })
-        })
+                unifyTweets.push(tweet);
+            });
+        });
+
         await this.twitterApi.create({
             tweets: unifyTweets,
-            date: Date.now().toString()
-        })
+            date: Date.now().toString(),
+        });
+
         return unifyTweets;
     }
 }
